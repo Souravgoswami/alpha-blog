@@ -21,8 +21,13 @@ Bundler.require(*Rails.groups)
 
 module TestApp6
 	class Application < Rails::Application
-# Initialize configuration defaults for originally generated Rails version.
 		config.load_defaults 6.0
 		config.generators.system_tests = nil
+
+		config.assets.compile = true
+		config.assets.enabled = true
+		config.serve_static_assets = true
+		config.assets.digest = true
+		config.cache_classes = true
 	end
 end
