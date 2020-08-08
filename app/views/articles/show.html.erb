@@ -1,15 +1,35 @@
-<p>
-	<strong>Title:</strong>
-	<%= @article.title %>
-</p>
 
-<p>
-	<strong>Description:</strong>
-	<%= @article.description %>
-</p>
+<div class="container-fluid">
+	<% @article.tap do |x| %>
+		<div class="p-2">
+			<div class="card shadow-sm rounded">
+				<img class="card-img-top" src="..." alt="Card image cap">
+				<div class="card-body">
+					<div class="card-footer text-muted">
+						<h5>class="text-center"><%= @article.title %></h5>
+						<pre class="card-text text-success">by <em><%= x.author %></em></pre>
+					</div>
+					<div class="card-text"><%= simple_format x.description %></div>
 
-<%= link_to 'Edit', edit_article_path(@article) %>
-|
-<%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete article #{@article.id}" } %>
-|
-<%= link_to 'Back', articles_path %>
+					<%= link_to '', x, class: 'btn-outline-primary-animated', 'data-content': 'View' %>
+					<%= link_to '', edit_article_path(x), class: 'btn-outline-emerald-animated', 'data-content': 'Edit' %>
+					<%= link_to '', x, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn-outline-danger-animated', 'data-content': 'Delete' %>
+
+					<div class="card-footer text-muted">
+						Updated <%= x.updated_at.strftime("%d/%m/%y %H:%M") %>
+						Updated <%= x.updated_at.to_i %>
+					</div>
+				</div>
+				<div>
+					<%= link_to '', edit_article_path(@article), 'data-content': 'Edit', class: 'btn-outline-green-animated' %>
+					<%= link_to '', article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete article #{@article.id}" }, 'data-content': 'Delete', class: 'btn-outline-danger-animated' %>
+				</div>
+
+				<div>
+					<%= link_to '', articles_path, class: 'btn-outline-warning-animated', 'data-content': 'Back' %>
+					<%= link_to '', new_article_path, class: 'btn-outline-info-animated', 'data-content': 'New Article' %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

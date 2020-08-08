@@ -1,24 +1,36 @@
-<% if @article.errors.any? %>
-	<h2>The following errors prevented the article from being saved:</h2>
-	<ul>
-		<% @article.errors.full_messages.each do |x| %>
-			<li><%= x %></li>
-		<% end %>
-	</ul>
-<% end %>
 
-<%= form_with model: @article, local: true do |f| %>
-	<div class="form-group">
-		<%= f.label :title %>
-		<%= f.text_field :title, class: 'form-control' %>
-	</div>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<%= render 'shared/errors' %>
+			<%= form_with model: @article, local: true, class: 'shadow p-3 bg-primary rounded' do |f| %>
+				<%= f.label :title, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Title</div>
+						<div class="col-md-10"><%= f.text_field :title, class: 'form-control shadow-sm rounded', placeholder: 'Article title' %></div>
+					</div>
+				<% end %>
 
-	<div class="form-group">
-		<%= f.label :description %>
-		<%= f.text_field :description, class: 'form-control' %>
-	</div>
+				<%= f.label :author, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Author</div>
+						<div class="col-md-10"><%= f.text_field :author, rows: 10, class: 'form-control shadow-sm rounded', placeholder: 'Describe article' %></div>
+					</div>
+				<% end %>
 
-	<div class="form-group">
-		<%= f.submit %>
+				<%= f.label :description, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Description</div>
+						<div class="col-md-10"><%= f.text_area :description, rows: 10, class: 'form-control shadow-sm rounded', placeholder: 'Describe article' %></div>
+					</div>
+				<% end %>
+
+				<div class="form-group text-center">
+					<label class="btn-outline-light-animated", data-content="Submit">
+						<%= f.submit '', style: 'display: none' %>
+					</label>
+				</div>
+			<% end %>
+		</div>
 	</div>
-<% end %>
+</div>

@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import "bootstrap/scss/bootstrap.scss" ;
+ @import "bootstrap/scss/bootstrap" ;
 
 .field_with_errors {
 	color: #f55 ;
@@ -31,4 +31,48 @@
 		transform: rotate(1deg) ;
 
 	}
+}
+
+body, html {
+	height: 100% ;
+	display: flex ;
+	flex-direction: column ;
+}
+
+#page-content {
+	flex: 1 0 auto ;
+}
+
+.text-center {
+	text-align: center ;
+}
+
+.jumbotron {
+	background: #111 url('patrick-fore-0gkw_9fy0eQ-unsplash') center center !important ;
+	background-size: cover !important  ;
+	color: #fff !important ;
+	text-shadow: 2px 2px 3px #000 !important ;
+	filter: drop-shadow(0px 0px 4px #0008) ;
+	transition: all 0.25s ease ;
+
+	&:hover {
+		filter: drop-shadow(8px 8px 2px #0006) ;
+	}
+}
+
+.btn {
+	color: #fff !important ;
+}
+
+#footer {
+	background-color: #222 ;
+	color: #fff ;
+	padding: 16px ;
+	text-align: center ;
+	flex-shrink: none ;
+	margin-top: 5vh ;
+}
+
+.width-100 {
+	width: 100% !important ;
 }

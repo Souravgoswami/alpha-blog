@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>TestApp6</title>
+		<title>Alpha Blog</title>
 		<%= csrf_meta_tags %>
 		<%= csp_meta_tag %>
 		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag 'btn_outline_animated', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 	</head>
 
 	<body>
-		<%= render 'layouts/messages' %>
-		<%= yield %>
+		<%= render 'layouts/navbar' %>
+
+		<div id="page-content">
+			<%= render 'layouts/messages' %>
+			<%= yield %>
+		</div>
+
+		<%= render 'layouts/footer' %>
 	</body>
 </html>
