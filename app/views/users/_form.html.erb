@@ -25,7 +25,7 @@
 				<% end %>
 
 				<div class="form-group text-center">
-					<label class="btn-outline-light-animated", data-content="Submit">
+					<label class="btn-outline-light-animated" data-content="<%= @user.new_record? ? 'Sign Up' : 'Update Account' %>">
 						<%= f.submit '', style: 'display: none' %>
 					</label>
 				</div>
