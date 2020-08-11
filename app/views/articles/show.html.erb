@@ -5,17 +5,19 @@
 			<div class="card shadow-sm rounded">
 				<img class="card-img-top" src="..." alt="Card image cap">
 				<div class="card-body">
-					<div class="card-footer text-muted">
-						<h5>class="text-center"><%= @article.title %></h5>
-						<pre class="card-text text-success">by <em><%= x.author %></em></pre>
+					<div class="card-footer text-muted text-center">
+						<h5><%= @article.title %></h5>
+						<pre class="card-text text-success">by <em><%= x.user.username %></em></pre>
 					</div>
+
 					<div class="card-text"><%= simple_format x.description %></div>
 
 					<%= link_to '', x, class: 'btn-outline-primary-animated', 'data-content': 'View' %>
 					<%= link_to '', edit_article_path(x), class: 'btn-outline-emerald-animated', 'data-content': 'Edit' %>
 					<%= link_to '', x, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn-outline-danger-animated', 'data-content': 'Delete' %>
 
-					<div class="card-footer text-muted">
+					<hr>
+					<div>
 						Updated <%= x.updated_at.strftime("%d/%m/%y %H:%M") %>
 						Updated <%= x.updated_at.to_i %>
 					</div>
