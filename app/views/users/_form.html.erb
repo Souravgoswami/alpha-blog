@@ -1,22 +1,35 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<%= render 'shared/errors', obj: @user %>
+			<%= form_with model: @user, local: true, class: 'shadow p-3 bg-primary rounded' do |f| %>
+				<%= f.label :username, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Username</div>
+						<div class="col-md-10"><%= f.text_field :username, class: 'form-control shadow-sm rounded', placeholder: 'Username' %></div>
+					</div>
+				<% end %>
 
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+				<%= f.label :email, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Email</div>
+						<div class="col-md-10"><%= f.text_field :email, rows: 10, class: 'form-control shadow-sm rounded', placeholder: 'Email address' %></div>
+					</div>
+				<% end %>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
+				<%= f.label :password, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Password</div>
+						<div class="col-md-10"><%= f.password_field :password, rows: 10, class: 'form-control shadow-sm rounded', placeholder: 'Enter a password' %></div>
+					</div>
+				<% end %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+				<div class="form-group text-center">
+					<label class="btn-outline-light-animated", data-content="Submit">
+						<%= f.submit '', style: 'display: none' %>
+					</label>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

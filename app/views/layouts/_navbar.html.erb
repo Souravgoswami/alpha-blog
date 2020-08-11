@@ -11,22 +11,23 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item dropdown <%= active?(articles_path) %>">
-					<%= link_to 'Articles', new_article_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
+				<%= link_to 'Articles', new_article_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
 
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<%= link_to 'Create a New Article', new_article_path, class: 'dropdown-item' %>
-						<%= link_to 'View Articles', articles_path, class: 'dropdown-item' %>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Something else here</a>
-					</div>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<%= link_to 'Create a New Article', new_article_path, class: 'dropdown-item' %>
+					<%= link_to 'View Articles', articles_path, class: 'dropdown-item' %>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Something else here</a>
+				</div>
 			</li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="#">Link</a>
-			</li>
+			<li class="nav-item dropdown <%= active?(users_signup_path) %>">
+				<%= link_to 'Articles', users_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
 
-			<li class="nav-item">
-				<a class="nav-link disabled" href="#">Disabled</a>
+				<div class="dropdown-menu" aria-labelledby="usersDropdown">
+					<%= link_to 'Sign Up', users_signup_path, class: 'dropdown-item' %>
+					<%= link_to 'Sign In', users_signin_path, class: 'dropdown-item' %>
+				</div>
 			</li>
 		</ul>
 

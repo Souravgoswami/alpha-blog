@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+	get 'signup', to: 'users#new', as: :users_signup
+	get 'signin', to: 'users#signin', as: :users_signin
+	resources :users, except: %i[new]
+
 	get 'articles/new', to: 'articles#new', as: 'new_article'
 	post 'articles', to: 'articles#create', as: ''
 	get 'articles/:id/edit', to: 'articles#edit', as: 'edit_article'
