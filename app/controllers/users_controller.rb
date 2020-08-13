@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	include PaginationOf
 	before_action :set_user, only: %i[ edit update show ]
 
 	def new
@@ -22,14 +23,18 @@ class UsersController < ApplicationController
 	def update
 		if @user.update(user_params)
 			flash[:notice] = "Your account information was successfully updated"
-			redirect_to articles_path
+			redirect_to @user
 		else
 			render :edit
 		end
 	end
 
 	def show
-		@user_articles = @user.articles
+		@user_articles = paginate(@user.articles)
+	end
+
+	def index
+		@users = paginate(User)
 	end
 
 	private

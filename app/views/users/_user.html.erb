@@ -1,0 +1,21 @@
+<div class="col-md-3 p-2">
+	<div class="card shadow-sm rounded hover-shadow">
+		<div class="card-body">
+			<%= link_to x do %>
+				<h5 class="card-title"><%= text_limit(x.username, 36) %></h5>
+			<% end %>
+
+			<%= link_to gravatar_for(x, size: 150), x %>
+			<%= pluralize(x.articles.count, 'article') %>
+
+			<br>
+
+			<%= link_to '', x, class: 'btn-outline-primary-animated', 'data-content': 'View profile' %>
+			<%= link_to '', edit_user_path(x), class: 'btn-outline-emerald-animated', 'data-content': 'Edit User' %>
+
+			<div class="card-footer text-muted mt-2">
+				Joined <%= time_ago_in_words(x.created_at) %> ago
+			</div>
+		</div>
+	</div>
+</div>

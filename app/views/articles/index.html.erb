@@ -5,4 +5,8 @@
 	<div class="row">
 		<%= render partial: 'article', collection: @articles, as: :x %>
 	</div>
+
+	<div class="pagination">
+		<%= will_paginate @articles, container: false %>
+	</div>
 </div>

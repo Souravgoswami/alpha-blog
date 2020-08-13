@@ -6,7 +6,7 @@
 				<h5 class="card-title"><%= text_limit(x.title, 36) %></h5>
 			<% end %>
 
-			<pre class="card-text text-success"><em>by <%= text_limit(x.user.username, 36) %></em></pre>
+			<pre class="card-text text-success"><em>by <%= link_to "#{text_limit(x.user.username, 36)}", x.user, class: 'link' %></em></pre>
 			<p class="card-text"><%= text_limit(x.description, 50) %></p>
 
 			<%= link_to '', x, class: 'btn-outline-primary-animated', 'data-content': 'View' %>

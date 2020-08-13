@@ -13,7 +13,7 @@ module ApplicationHelper
 		size = options[:size].to_i
 		hash = Digest::MD5.hexdigest(user.email.downcase)
 		image_tag(
-			"https://www.gravatar.com/avatar/#{hash}?s=#{size}",
+			"https://www.gravatar.com/avatar/#{hash}?s=#{size}&d=identicon",
 			alt: 'User Image',
 			class: 'rounded-circle mx-auto d-block shadow-sm'
 		)

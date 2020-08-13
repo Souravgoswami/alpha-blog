@@ -1,0 +1,11 @@
+<h1 class="text-center mt-4">Alpha Bloggers</h1>
+
+<div class="container-fluid">
+	<div class="row">
+		<%= render partial: 'user', collection: @users, as: :x %>
+	</div>
+
+	<div class="pagination">
+		<%= will_paginate @articles, container: false %>
+	</div>
+</div>
