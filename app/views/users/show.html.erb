@@ -1,0 +1,10 @@
+<%= @user.username %>
+<%= gravatar_for @user, size: 200 %>
+
+<h3>Articles</h3>
+
+<div class="container-fluid">
+	<div class="row">
+		<%= render partial: 'articles/article', collection: @user_articles, as: :x %>
+	</div>
+</div>
