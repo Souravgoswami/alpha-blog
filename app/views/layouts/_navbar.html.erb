@@ -22,12 +22,17 @@
 			</li>
 
 			<li class="nav-item dropdown <%= active?(users_signup_path) %>">
-				<%= link_to 'User', users_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
+				<%= link_to (logged_in? ? current_user.username : 'Guest'), users_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
 
-				<div class="dropdown-menu" aria-labelledby="usersDropdown">
-					<%= link_to 'Sign Up', users_signup_path, class: 'dropdown-item' %>
-					<%= link_to 'Sign In', users_signin_path, class: 'dropdown-item' %>
-				</div>
+					<div class="dropdown-menu" aria-labelledby="usersDropdown">
+						<% unless logged_in? %>
+							<%= link_to 'Log In', users_login_path, class: 'dropdown-item' %>
+							<%= link_to 'Sign Up', users_signup_path, class: 'dropdown-item' %>
+						<% else %>
+							<%= link_to 'Logout', logout_path, method: :delete, class: 'dropdown-item' %>
+						<% end %>
+					</div>
+
 			</li>
 
 			<li class="nav-item dropdown <%= active?(users_path) %>">

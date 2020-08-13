@@ -1,0 +1,42 @@
+<h1>Login for Alpha BLog</h1>
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<%= form_with scope: :session, url: login_path, local: true, class: 'shadow p-3 bg-primary rounded' do |f| %>
+<%
+=begin
+%>
+				<%= f.label :username, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Username</div>
+						<div class="col-md-10"><%= f.text_field :username, class: 'form-control shadow-sm rounded', placeholder: 'Username' %></div>
+					</div>
+				<% end %>
+<%
+=end
+%>
+
+				<%= f.label :email, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Email</div>
+						<div class="col-md-10"><%= f.text_field :email, rows: 10, class: 'form-control shadow-sm rounded', placeholder: 'Email address' %></div>
+					</div>
+				<% end %>
+
+				<%= f.label :password, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Password</div>
+						<div class="col-md-10"><%= f.password_field :password, rows: 10, class: 'form-control shadow-sm rounded', placeholder: 'Enter a password' %></div>
+					</div>
+				<% end %>
+
+				<div class="form-group text-center">
+					<label class="btn-outline-light-animated" data-content="Log In">
+						<%= f.submit '', style: 'display: none' %>
+					</label>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
