@@ -33,6 +33,9 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		flash[:alert] = 'hi'
+		flash[:notice] = 'hi'
+		flash[:warning] = 'hi'
 		@user_articles = paginate(@user.articles)
 	end
 
