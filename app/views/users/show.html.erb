@@ -1,8 +1,9 @@
 <%= gravatar_for @user, size: 200 %>
-<div class="text-center mt-4">
-	<%= link_to '', edit_user_path(@user), class: 'btn-outline-blue-animated', 'data-content': 'Edit Profile' %>
-</div>
-
+<% if logged_in? && @user == current_user %>
+	<div class="text-center mt-4">
+		<%= link_to '', edit_user_path(@user), class: 'btn-outline-blue-animated', 'data-content': 'Edit Profile' %>
+	</div>
+<% end %>
 <div class="text-center m-4">
 	<h4  class="text-success"><%= @user.username %></h4>
 </div>

@@ -14,7 +14,9 @@
 				<%= link_to 'Articles', new_article_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
 
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<%= link_to 'Create a New Article', new_article_path, class: 'dropdown-item' %>
+					<% if logged_in? %>
+						<%= link_to 'Create a New Article', new_article_path, class: 'dropdown-item' %>
+					<% end %>
 					<%= link_to 'View Articles', articles_path, class: 'dropdown-item' %>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Something else here</a>
@@ -29,6 +31,10 @@
 							<%= link_to 'Log In', users_login_path, class: 'dropdown-item' %>
 							<%= link_to 'Sign Up', users_signup_path, class: 'dropdown-item' %>
 						<% else %>
+							<%= link_to 'View Profile', current_user, class: 'dropdown-item' %>
+							<%= link_to 'Edit Profile', edit_user_path(current_user), class: 'dropdown-item' %>
+							<%= link_to 'Delete Profile', current_user, method: :delete, class: 'dropdown-item', data: {confirm: 'Are you sure?' } %>
+							<div class="dropdown-divider"></div>
 							<%= link_to 'Logout', logout_path, method: :delete, class: 'dropdown-item' %>
 						<% end %>
 					</div>

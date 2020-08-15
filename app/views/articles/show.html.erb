@@ -1,38 +1,34 @@
-
 <div class="container-fluid">
-	<% @article.tap do |x| %>
-		<div class="p-2">
-			<div class="card shadow-sm rounded">
-				<img class="card-img-top" src="..." alt="Card image cap">
-				<div class="card-body">
-					<div class="card-footer text-muted text-center">
-						<h5><%= @article.title %></h5>
-						<%= gravatar_for(x.user, size: 60) %>
-						<pre class="card-text text-success"><em>by <%= link_to "#{text_limit(x.user.username, 36)}", x.user, class: 'link' %></em></pre>
-					</div>
-
-					<div class="card-text"><%= simple_format x.description %></div>
-
-					<%= link_to '', x, class: 'btn-outline-primary-animated', 'data-content': 'View' %>
-					<%= link_to '', edit_article_path(x), class: 'btn-outline-emerald-animated', 'data-content': 'Edit' %>
-					<%= link_to '', x, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn-outline-danger-animated', 'data-content': 'Delete' %>
-
-					<hr>
-					<div>
-						Updated <%= x.updated_at.strftime("%d/%m/%y %H:%M") %>
-						Updated <%= x.updated_at.to_i %>
-					</div>
-				</div>
-				<div>
-					<%= link_to '', edit_article_path(@article), 'data-content': 'Edit', class: 'btn-outline-green-animated' %>
-					<%= link_to '', article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete article #{@article.id}" }, 'data-content': 'Delete', class: 'btn-outline-danger-animated' %>
+	<div class="p-2">
+		<div class="card shadow-sm rounded">
+			<img class="card-img-top" src="..." alt="Card image cap">
+			<div class="card-body">
+				<div class="card-footer text-muted text-center">
+					<h5><%= @article.title %></h5>
+					<%= gravatar_for(@article.user, size: 60) %>
+					<pre class="card-text text-success"><em>by <%= link_to "#{text_limit(@article.user.username, 36)}", @article.user, class: 'link' %></em></pre>
 				</div>
 
+				<div class="card-text"><%= simple_format @article.description %></div>
+
+				<%= link_to '', @article, class: 'btn-outline-primary-animated', 'data-content': 'View' %>
+
+				<% if current_user && @article.user == current_user %>
+					<%= link_to '', edit_article_path(@article), class: 'btn-outline-emerald-animated', 'data-content': 'Edit' %>
+					<%= link_to '', @article, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn-outline-danger-animated', 'data-content': 'Delete' %>
+				<% end %>
+				<hr>
+
 				<div>
-					<%= link_to '', articles_path, class: 'btn-outline-warning-animated', 'data-content': 'Back' %>
-					<%= link_to '', new_article_path, class: 'btn-outline-info-animated', 'data-content': 'New Article' %>
+					Updated <%= @article.updated_at.strftime("%d/%m/%y %H:%M") %>
+					Updated <%= @article.updated_at.to_i %>
 				</div>
 			</div>
+
+			<div>
+				<%= link_to '', articles_path, class: 'btn-outline-warning-animated', 'data-content': 'Back' %>
+				<%= link_to '', new_article_path, class: 'btn-outline-info-animated', 'data-content': 'New Article' %>
+			</div>
 		</div>
-	<% end %>
+	</div>
 </div>

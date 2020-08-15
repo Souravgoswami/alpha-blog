@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 	def create
 		@user = User.find_by(email: params.dig(:session, :email).downcase)
 
-		if !@user
+		unless @user
 			flash.now[:alert] = 'Invalid email'
 			render :new
 		else

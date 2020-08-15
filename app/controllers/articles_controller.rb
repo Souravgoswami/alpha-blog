@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
 	include PaginationOf
 	before_action :set_article, only: %i[ show edit update destroy ]
+	before_action :require_user, except: %i[ show index ]
+	before_action :require_same_user, only: %i[ edit update destroy]
 
 	def index
 		@articles = paginate(Article)
@@ -12,7 +14,7 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
-		@article.user ||= User.first
+		@article.user = current_user
 
 		if @article.save
 			redirect_to @article
@@ -50,5 +52,12 @@ class ArticlesController < ApplicationController
 
 	def article_params
 		params.require(:article).permit(:title, :description)
+	end
+
+	def require_same_user
+		if current_user != @article.user
+			flash[:alert] = "Sorry, the address wasn't understood"
+			redirect_to @article
+		end
 	end
 end

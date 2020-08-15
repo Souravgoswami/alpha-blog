@@ -10,9 +10,10 @@
 			<p class="card-text"><%= text_limit(x.description, 50) %></p>
 
 			<%= link_to '', x, class: 'btn-outline-primary-animated', 'data-content': 'View' %>
+			<% if logged_in? && x.user == current_user %>
 			<%= link_to '', edit_article_path(x), class: 'btn-outline-emerald-animated', 'data-content': 'Edit' %>
 			<%= link_to '', x, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn-outline-danger-animated', 'data-content': 'Delete' %>
-
+			<% end %>
 			<div class="card-footer text-muted">
 				Updated <%= x.updated_at.strftime("%d/%m/%y %H:%M") %>
 				Updated <%= x.updated_at.to_i %>
