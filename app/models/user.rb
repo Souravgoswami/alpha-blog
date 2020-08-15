@@ -1,6 +1,9 @@
 class User < ApplicationRecord
 	has_many :articles, dependent: :destroy
-	before_save { email.downcase! }
+	before_save do
+		email.downcase!
+		username.replace(username.split(?\s).each(&:capitalize!).join(?\s))
+	end
 
 	EMAIL_REGEXP = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

@@ -1,7 +1,16 @@
 <%= gravatar_for @user, size: 200 %>
-<% if logged_in? && @user == current_user %>
+<% if logged_in? && (@user == current_user || current_user.admin?) %>
 	<div class="text-center mt-4">
 		<%= link_to '', edit_user_path(@user), class: 'btn-outline-blue-animated', 'data-content': 'Edit Profile' %>
+
+		<% if current_user.admin? %>
+			<%= link_to '',
+				@user, method: :delete,
+				class: 'btn-outline-danger-animated',
+				'data-content': 'Delete User',
+				data: { confirm: "Are you sure to delete #{current_user.username}'s profile, and all associated articles?" }
+			%>
+		<% end %>
 	</div>
 <% end %>
 <div class="text-center m-4">

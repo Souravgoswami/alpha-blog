@@ -13,7 +13,7 @@
 
 				<%= link_to '', @article, class: 'btn-outline-primary-animated', 'data-content': 'View' %>
 
-				<% if current_user && @article.user == current_user %>
+				<% if current_user && (@article.user == current_user || current_user.admin?) %>
 					<%= link_to '', edit_article_path(@article), class: 'btn-outline-emerald-animated', 'data-content': 'Edit' %>
 					<%= link_to '', @article, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn-outline-danger-animated', 'data-content': 'Delete' %>
 				<% end %>

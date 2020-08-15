@@ -12,8 +12,8 @@
 
 			<%= link_to '', x, class: 'btn-outline-primary-animated', 'data-content': 'View profile' %>
 
-			<% if logged_in? && x == current_user %>
-				<%= link_to '', edit_user_path(x), class: 'btn-outline-emerald-animated', 'data-content': 'Edit User' %>
+			<% if logged_in? && (x == current_user || current_user.admin?) %>
+				<%= link_to '', edit_user_path(x), class: 'btn-outline-emerald-animated', 'data-content': 'Edit Profile' %>
 			<% end %>
 
 			<div class="card-footer text-muted mt-2">

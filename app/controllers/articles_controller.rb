@@ -55,9 +55,9 @@ class ArticlesController < ApplicationController
 	end
 
 	def require_same_user
-		if current_user != @article.user
+		if current_user != @article.user && !current_user.admin?
 			flash[:alert] = "Sorry, the address wasn't understood"
-			redirect_to @article
+			redirect_to @user
 		end
 	end
 end

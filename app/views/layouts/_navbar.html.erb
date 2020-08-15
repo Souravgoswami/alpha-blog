@@ -24,7 +24,7 @@
 			</li>
 
 			<li class="nav-item dropdown <%= active?(users_signup_path) %>">
-				<%= link_to (logged_in? ? current_user.username : 'Guest'), users_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
+				<%= link_to (logged_in? ? "#{'[Admin] ' if current_user.admin?}#{current_user.username}" : 'Guest'), users_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
 
 					<div class="dropdown-menu" aria-labelledby="usersDropdown">
 						<% unless logged_in? %>

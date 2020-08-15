@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 	before_action :require_user, only: %i[ edit update ]
 	before_action :require_same_user, only: %i[ edit update ]
 
-
 	def new
 		@user = User.new
 	end
@@ -43,7 +42,7 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user.destroy
-		session[:user_id] = nil
+		session[:user_id] = nil if @user == current_user
 		flash[:notice] = 'Account and all associated article are deleted successfully'
 		redirect_to root_path
 	end
@@ -58,7 +57,7 @@ class UsersController < ApplicationController
 	end
 
 	def require_same_user
-		if current_user != @user
+		if current_user != @user && !current_user.admin?
 			flash[:alert] = "Sorry the address wasn't understood"
 			redirect_to @user
 		end
