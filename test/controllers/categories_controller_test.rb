@@ -11,7 +11,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 	end
 
 	test "should get new" do
-		get new_categories_url
+		get new_category_url
 		assert_response :success
 	end
 
@@ -20,7 +20,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 			post categories_url, params: { category: {  name: 'Travel' } }
 		end
 
-		assert_redirected_to categories_url(Category.last)
+		assert_redirected_to category_url(Category.last)
 	end
 
 	test "should show category" do
