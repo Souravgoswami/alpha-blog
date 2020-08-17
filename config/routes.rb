@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+	# get 'categories', to: 'categories#index', as: 'categories'
+	resources :categories, except: %i[ destroy ]
+
 	get 'signup', to: 'users#new', as: :users_signup
 	get 'login', to: 'sessions#new', as: :users_login
 	post 'login', to: 'sessions#create'
