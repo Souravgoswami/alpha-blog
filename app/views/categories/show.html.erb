@@ -1,1 +1,19 @@
 <h1 class="text-center mt-4">Category: <%= @category.name %></h1>
+
+<% if logged_in? && current_user.admin? %>
+	<div class="text-center mt-4">
+		<%= link_to '', edit_category_path(@category), class: 'btn-outline-blue-animated', 'data-content': 'Edit Category Name' %>
+	</div>
+<% end %>
+
+<h3 class="text-center m-4">Articles</h3>
+
+<div class="container-fluid">
+	<div class="row">
+		<%= render partial: 'articles/article', collection: @articles, as: :x %>
+	</div>
+</div>
+
+<div class="pagination">
+	<%= will_paginate @articles, container: false %>
+</div>

@@ -23,6 +23,7 @@ class CategoriesController < ApplicationController
 
 	def show
 		@category = Category.find(params[:id])
+		@articles = paginate(@category.articles)
 	end
 
 	def edit

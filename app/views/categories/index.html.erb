@@ -7,6 +7,7 @@
 				<div class="card-body">
 					<%= link_to x do %>
 						<h5 class="card-title"><%= text_limit(x.name, 36) %></h5>
+						<p class="card-text"><%= pluralize(x.articles.count, 'octopus') %></p>
 					<% end %>
 					<div class="card-footer text-muted">
 						Created <%= x.created_at.strftime("%d/%m/%y %H:%M") %>
