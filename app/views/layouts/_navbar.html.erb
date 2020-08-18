@@ -11,7 +11,7 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item dropdown <%= active?(articles_path) %>">
-				<%= link_to 'Articles', new_article_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
+				<%= link_to 'Articles', articles_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
 
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<% if logged_in? %>
@@ -20,6 +20,17 @@
 					<%= link_to 'View Articles', articles_path, class: 'dropdown-item' %>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Something else here</a>
+				</div>
+			</li>
+
+			<li class="nav-item dropdown <%= active?(articles_path) %>">
+				<%= link_to 'Categories', categories_path, class: "nav-link dropdown-toggle", id: "navbarDropDown", role: "button", 'data-toggle': "dropdown", "aria-haspopup": 'true', 'aria-expanded': "false" %>
+
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<% if logged_in? && current_user.admin? %>
+						<%= link_to 'Create a New Category', new_category_path, class: 'dropdown-item' %>
+					<% end %>
+					<%= link_to 'View Categories', categories_path, class: 'dropdown-item' %>
 				</div>
 			</li>
 
