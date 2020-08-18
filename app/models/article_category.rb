@@ -2,11 +2,10 @@ class ArticleCategory < ApplicationRecord
 	belongs_to :article
 	belongs_to :category
 
-	before_save :check_duplicates
+	validate :check_duplicates
 
+	private
 	def check_duplicates
-		if ArticleCategory.where(article_id: article_id, category_id: category_id).count > 0
-			raise ActiveRecord::RecordExists, 'Record already exists' if new_record?
-		end
+		errors[:base] << 'Record already exists!' if ArticleCategory.where(article_id: article_id, category_id: category_id).count > 0 && new_record?
 	end
 end
