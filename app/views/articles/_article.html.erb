@@ -20,8 +20,7 @@
 			<%= link_to '', x, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn-outline-danger-animated', 'data-content': 'Delete' %>
 			<% end %>
 			<div class="card-footer text-muted">
-				Updated <%= x.updated_at.strftime("%d/%m/%y %H:%M") %>
-				Updated <%= x.updated_at.to_i %>
+				Created at <%= x.updated_at.strftime("%d/%m/%y %H:%M") %>
 			</div>
 		</div>
 	</div>
