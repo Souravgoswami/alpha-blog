@@ -7,6 +7,11 @@
 			<% end %>
 
 			<pre class="card-text text-success"><em>by <%= link_to "#{text_limit(x.user.username, 36)}", x.user, class: 'link' %></em></pre>
+
+			<%if x.categories.any? %>
+				<%= render partial: 'articles/category', collection: x.categories.uniq, as: :category %>
+			<% end %>
+
 			<p class="card-text"><%= text_limit(x.description, 50) %></p>
 
 			<%= link_to '', x, class: 'btn-outline-primary-animated', 'data-content': 'View' %>

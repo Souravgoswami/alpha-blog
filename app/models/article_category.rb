@@ -6,7 +6,7 @@ class ArticleCategory < ApplicationRecord
 
 	def check_duplicates
 		if ArticleCategory.where(article_id: article_id, category_id: category_id).count > 0
-			raise ActiveRecord::RecordExists, 'Record already exists'
+			raise ActiveRecord::RecordExists, 'Record already exists' if new_record?
 		end
 	end
 end

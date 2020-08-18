@@ -7,6 +7,9 @@
 					<h5><%= @article.title %></h5>
 					<%= gravatar_for(@article.user, size: 60) %>
 					<pre class="card-text text-success"><em>by <%= link_to "#{text_limit(@article.user.username, 36)}", @article.user, class: 'link' %></em></pre>
+					<%if @article.categories.any? %>
+						<%= render partial: 'category', collection: @article.categories, as: :category %>
+					<% end %>
 				</div>
 
 				<div class="card-text"><%= simple_format @article.description %></div>

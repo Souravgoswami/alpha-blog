@@ -141,3 +141,30 @@ body, html {
 		filter: drop-shadow(3px 3px 4px #0003) ;
 	}
 }
+
+.badge-blue-green {
+	display: inline-block ;
+	margin: 4px 0px ;
+
+	& .badge-item {
+		display: block ;
+		color: #fff ;
+		background: linear-gradient(45deg, #08F, #1C8, #F85, #99F) ;
+		background-size: 300% ;
+		border-radius: 4px ;
+		padding: 0px 4px ;
+		transition: all 0.25s ease ;
+		text-transform: uppercase ;
+
+		&:hover {
+			text-decoration: none ;
+			background-position: 100% ;
+		}
+
+		&:active {
+			background-clip: text ;
+			text-decoration: none ;
+			color: transparent ;
+		}
+	}
+}

@@ -17,6 +17,23 @@
 					</div>
 				<% end %>
 
+				<%= f.label :category, class: 'width-100' do %>
+					<div class="form-group row">
+						<div class="text-white col-md-2">Categories</div>
+						<div class="col-md-10 rounded shadow-sm">
+						<%= f.collection_select :category_ids, Category.all,
+							:id, :name,
+							{ prompt: 'Make your selection from the list below (can be empty)' },
+							{
+								size: 10,
+								class: 'custom-select',
+								multiple: true,
+							}
+						%>
+						</div>
+					</div>
+				<% end %>
+
 				<div class="form-group text-center">
 					<label class="btn-outline-light-animated", data-content="Submit">
 						<%= f.submit '', style: 'display: none' %>
