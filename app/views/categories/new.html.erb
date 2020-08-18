@@ -1,23 +1,7 @@
 <h1>Create a new Category</h1>
 
-<div class="container">
-	<div class="row justify-content-center">
-		<div class="col-10">
-			<%= render 'shared/errors', obj: @category %>
-			<%= form_with model: @category, local: true, class: 'shadow p-3 bg-primary rounded' do |f| %>
-				<%= f.label :name, class: 'width-100' do %>
-					<div class="form-group row">
-						<div class="text-white col-md-2">Category</div>
-						<div class="col-md-10"><%= f.text_field :name, class: 'form-control shadow-sm rounded', placeholder: 'Category Name' %></div>
-					</div>
-				<% end %>
+<%= render 'form' %>
 
-				<div class="form-group text-center">
-					<label class="btn-outline-light-animated" data-content="<%= @category.new_record? ? 'Create' : 'Update' %>">
-						<%= f.submit '', style: 'display: none' %>
-					</label>
-				</div>
-			<% end %>
-		</div>
-	</div>
+<div class="mb-3">
+	<%= link_to '', categories_path, class: 'btn-outline-danger-animated', 'data-content': 'Go Back' %>
 </div>
